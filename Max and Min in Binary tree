@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+
+class treeNode{
+    public:
+    int data;
+    treeNode* left = nullptr;
+    treeNode* right = nullptr;
+
+
+    treeNode(int data){
+        this->data  = data;
+        this->left = left;
+        this->right = right;
+    }
+};
+
+int findMaximum(treeNode* root){
+    if(root == nullptr) return 0;
+   
+    int left = findMaximum(root->left);
+    int right = findMaximum(root->right);
+    return max(root->data, max(left, right));
+}
+
+int findMinimum(treeNode* root){
+    if(root == nullptr) return 0;
+    
+    int left = findMinimum(root->left);
+    int right = findMinimum(root->right);
+    return min(root->data, min(left, right));
+
+}
+
+int main(){
+    treeNode* root = new treeNode(1);
+    root->left = new treeNode(10);
+    root->right = new treeNode(20);
+    root->left->left = new treeNode(4);
+    root->left->right = new treeNode(8);
+    
+
+    cout << "Maximum value in the tree: " << findMaximum(root) << endl;
+    cout << "Minimum value in the tree: " << findMinimum(root) << endl;
+
+  return 0;
+
+}
