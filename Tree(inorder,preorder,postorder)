@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+
+class treeNode{
+    public:
+    int data;
+    treeNode* left;
+    treeNode* right;
+
+
+    treeNode(int data){
+        this->data = data;
+        this->left = nullptr;
+        this->right = nullptr;
+    }
+};
+
+
+     void inorder(treeNode* root){
+        if(root == nullptr) return;
+
+        inorder(root->left);
+        cout << root->data << " ";
+        inorder(root->right);
+    }
+
+    void preorder(treeNode* root){
+        if(root == nullptr) return;
+        cout<< root->data << " ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+
+    void postorder(treeNode* root){
+        if(root == nullptr) return;
+        postorder(root->left);
+        postorder(root->right);
+        cout<< root->data << " ";
+    }
+
+
+int main(){
+    treeNode* root = new treeNode(1);
+    root->left = new treeNode(4);
+    root->right = new treeNode(5);
+    cout << "inorder traversal:";
+    inorder(root);
+    cout << endl;
+
+    cout << "preorder traversal:";
+    preorder(root);
+     cout << endl;
+
+    cout << "postorder traversal:";
+    postorder(root);
+    cout << endl;
+
+    return 0;
+
+
+}
